@@ -1,0 +1,17 @@
+.idea
+.settings
+.build
+.beans
+.DS_Store
+node_modules
+/logs
+/cdbs
+*.log
+oom_1
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db

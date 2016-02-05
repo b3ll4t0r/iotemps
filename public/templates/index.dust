@@ -1,0 +1,15 @@
+{>"layouts/master" /}
+
+{<body}
+    <h1>OUT</h1>
+    <img src="{out.wunder.current_observation.icon_url}" /> {out.wunder.current_observation.temp_f}
+    <h1>IN</h1>
+    {#iter:in.nest.shared}
+        {value.name} ({key})<br/>Current temp: {value.current_temperature}<br/>Set temp: {value.target_temperature}
+    {/iter}
+    {in.location}<br/>
+    <h2>Up</h2>
+    {in.up.name} is set to {in.up.target_temp} and is currently {in.up.current_temp} w a humidity of {in.up.humidity}%.
+    <h2>Down</h2>
+    {in.down.name} is set to {in.down.target_temp} and is currently {in.down.current_temp} w a humidity of {in.down.humidity}%.
+{/body}
