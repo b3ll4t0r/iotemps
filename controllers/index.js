@@ -1,17 +1,16 @@
 'use strict';
 
-var dao = require('../lib/dao');
+var fs = require('fs');
+var IndexModel = require('../models/index');
 
 module.exports = function (router) {
 
     router.get('/', function (req, res) {
-        res.render('index', {});
+        var now = new Date();
+        var dateString = now.getFullYear() + "-" + (now.getMonth() +1) + "-" + now.getDate();
+        var model = new IndexModel(dateString);
+        model.data = fs.readFileSync(process.env.HOME + '/.iotemps/' + dateString).toString().split("\n");
+        console.log("found " + model.data.length + " records.");
+        res.render('index', model);
     });
-
-
-    router.get('/writeData', function (req, res) {
-        dao.recordData();
-        res.send(200);
-    });
-
 };
